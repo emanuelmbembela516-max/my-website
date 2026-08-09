@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom &amp; Bash Events Co. — Bright ideas. Bigger celebrations.</title>
+<meta name="description" content="Bloom & Bash Events Co. plans and decorates weddings, birthdays, and corporate events with bold, colorful style.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  :root{
+    --cream:#FFF8EE;
+    --cream-2:#FFF1DC;
+    --ink:#241245;
+    --ink-soft:#4A3B72;
+    --pink:#FF5D8F;
+    --pink-deep:#E8386E;
+    --yellow:#FFC145;
+    --teal:#00C2A8;
+    --purple:#6C3CE9;
+    --white:#FFFFFF;
+    --radius-lg:28px;
+    --radius-md:18px;
+    --shadow:0 18px 40px -18px rgba(36,18,69,0.35);
+    --container:1160px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Baloo 2',sans-serif;
+    margin:0 0 .4em 0;
+    line-height:1.1;
+    color:var(--ink);
+  }
+  p{margin:0 0 1em 0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--pink-deep);
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:2px;
+    background:var(--pink-deep);
+    display:inline-block;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:.98rem;
+    padding:14px 28px;
+    border-radius:100px;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px;}
+  .btn-primary{background:var(--ink);color:var(--white);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+  .btn-outline{background:transparent;border-color:var(--ink);color:var(--ink);}
+  .btn-outline:hover{background:var(--ink);color:var(--white);}
+  .btn-light{background:var(--white);color:var(--ink);}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,248,238,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid rgba(36,18,69,0.08);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:1.35rem;
+    display:flex;align-items:center;gap:10px;
+  }
+  .logo-dot{
+    width:14px;height:14px;border-radius:50%;
+    background:conic-gradient(var(--pink),var(--yellow),var(--teal),var(--purple),var(--pink));
+    flex-shrink:0;
+  }
+  .nav-links{
+    display:flex;gap:32px;align-items:center;
+    font-weight:600;font-size:.95rem;
+  }
+  .nav-links a{position:relative;padding:4px 0;}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:3px;
+    background:var(--pink);border-radius:3px;transition:width .2s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  .burger span{display:block;width:24px;height:3px;background:var(--ink);margin:5px 0;border-radius:3px;}
+
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed;inset:70px 0 0 0;background:var(--cream);
+      flex-direction:column;padding:36px 28px;gap:26px;font-size:1.2rem;
+      transform:translateY(-120%);transition:transform .3s ease;
+      border-top:2px solid rgba(36,18,69,.08);
+    }
+    .nav-links.open{transform:translateY(0);}
+    .burger{display:block;}
+    .nav-cta .btn-outline{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:86px 0 0;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+    padding-bottom:60px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,5vw,4.2rem);
+    font-weight:800;
+    letter-spacing:-.01em;
+  }
+  .hero h1 .hl{
+    background:linear-gradient(180deg,transparent 60%, var(--yellow) 60%);
+  }
+  .hero p.lead{
+    font-size:1.18rem;color:var(--ink-soft);max-width:480px;margin-bottom:28px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:34px;}
+  .hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+  .hero-stats div{font-family:'Space Mono',monospace;}
+  .hero-stats strong{display:block;font-family:'Baloo 2',sans-serif;font-size:1.9rem;color:var(--pink-deep);}
+  .hero-stats span{font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;}
+
+  .hero-art{
+    position:relative;aspect-ratio:1/1;
+  }
+  .hero-blob{
+    position:absolute;inset:6%;
+    border-radius:42% 58% 63% 37% / 45% 40% 60% 55%;
+    background:linear-gradient(135deg,var(--pink),var(--purple) 60%, var(--teal));
+    animation:blobmove 9s ease-in-out infinite;
+  }
+  @keyframes blobmove{
+    0%,100%{border-radius:42% 58% 63% 37% / 45% 40% 60% 55%;}
+    50%{border-radius:58% 42% 38% 62% / 55% 62% 38% 45%;}
+  }
+  .hero-card{
+    position:absolute;background:var(--white);border-radius:20px;
+    box-shadow:var(--shadow);padding:16px 18px;font-family:'Space Mono',monospace;
+    font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:10px;
+  }
+  .hero-card.c1{top:6%;left:-6%;color:var(--pink-deep);}
+  .hero-card.c2{bottom:12%;right:-8%;color:var(--teal);}
+  .hero-card.c3{bottom:-4%;left:14%;color:var(--purple);background:var(--yellow);box-shadow:none;}
+  .swatch{width:10px;height:10px;border-radius:50%;background:currentColor;}
+
+  .bunting{
+    display:block;width:100%;height:52px;
+    margin-top:-2px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(2rem,3.4vw,2.7rem);}
+  .section-head p{color:var(--ink-soft);font-size:1.08rem;}
+  .band-alt{background:var(--cream-2);}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .service-card{
+    background:var(--white);border-radius:var(--radius-lg);padding:34px 30px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+    transition:transform .25s ease;
+  }
+  .service-card:hover{transform:translateY(-6px);}
+  .service-icon{
+    width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;margin-bottom:20px;
+  }
+  .service-card:nth-child(1) .service-icon{background:#FFE3EC;}
+  .service-card:nth-child(2) .service-icon{background:#FFF1CB;}
+  .service-card:nth-child(3) .service-icon{background:#D9F7F1;}
+  .service-card h3{font-size:1.3rem;}
+  .service-card p{color:var(--ink-soft);font-size:.98rem;margin-bottom:16px;}
+  .service-list{list-style:none;padding:0;margin:0;font-size:.92rem;color:var(--ink);}
+  .service-list li{padding:5px 0;display:flex;gap:8px;align-items:flex-start;}
+  .service-list li::before{content:"✦";color:var(--pink-deep);flex-shrink:0;}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:120px;gap:16px;
+  }
+  .g-tile{
+    border-radius:var(--radius-md);position:relative;overflow:hidden;
+    display:flex;align-items:flex-end;padding:18px;
+    color:var(--white);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;
+  }
+  .g-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%, rgba(0,0,0,.45));}
+  .g-tile span{position:relative;z-index:1;}
+  .g-tile img,.g-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .g-tile:nth-child(1){grid-column:span 3;grid-row:span 2;background:linear-gradient(135deg,#FF5D8F,#E8386E);}
+  .g-tile:nth-child(2){grid-column:span 3;grid-row:span 1;background:linear-gradient(135deg,#FFC145,#FF9B45);}
+  .g-tile:nth-child(3){grid-column:span 3;grid-row:span 1;background:linear-gradient(135deg,#00C2A8,#00A0A8);}
+  .g-tile:nth-child(4){grid-column:span 2;grid-row:span 1;background:linear-gradient(135deg,#6C3CE9,#9A5DFF);}
+  .g-tile:nth-child(5){grid-column:span 2;grid-row:span 1;background:linear-gradient(135deg,#FF5D8F,#FFC145);}
+  .g-tile:nth-child(6){grid-column:span 2;grid-row:span 1;background:linear-gradient(135deg,#00C2A8,#6C3CE9);}
+  @media (max-width:760px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px;}
+    .g-tile:nth-child(1),.g-tile:nth-child(2),.g-tile:nth-child(3),
+    .g-tile:nth-child(4),.g-tile:nth-child(5),.g-tile:nth-child(6){grid-column:span 1;grid-row:span 1;}
+  }
+
+  /* ---------- PRICING (ticket stub) ---------- */
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;align-items:stretch;}
+  .ticket{
+    position:relative;background:var(--white);border-radius:16px;
+    box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .ticket.featured{background:var(--ink);color:var(--white);transform:translateY(-14px);}
+  .ticket.featured .ticket-price, .ticket.featured h3{color:var(--white);}
+  .ticket.featured .ticket-list li{color:#E7E1FF;}
+  .ticket-main{padding:32px 28px 24px;flex:1;}
+  .ticket-tag{
+    font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--pink-deep);font-weight:700;
+  }
+  .ticket.featured .ticket-tag{color:var(--yellow);}
+  .ticket-price{font-family:'Baloo 2',sans-serif;font-size:2.4rem;font-weight:800;margin:8px 0 4px;}
+  .ticket-price sub{font-family:'Inter',sans-serif;font-size:.9rem;font-weight:500;color:var(--ink-soft);}
+  .ticket-list{list-style:none;padding:0;margin:18px 0 0;font-size:.94rem;}
+  .ticket-list li{padding:7px 0;display:flex;gap:8px;color:var(--ink-soft);}
+  .ticket-list li::before{content:"●";font-size:.6rem;color:var(--teal);transform:translateY(2px);}
+  .ticket-stub{
+    position:relative;
+    border-top:2px dashed rgba(36,18,69,.25);
+    padding:20px 28px 26px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .ticket.featured .ticket-stub{border-top-color:rgba(255,255,255,.3);}
+  .ticket-stub::before,.ticket-stub::after{
+    content:"";position:absolute;top:-13px;width:26px;height:26px;border-radius:50%;
+    background:var(--cream);
+  }
+  .band-alt .ticket-stub::before,.band-alt .ticket-stub::after{background:var(--cream-2);}
+  .ticket-stub::before{left:-13px;}
+  .ticket-stub::after{right:-13px;}
+  .ticket-code{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--ink-soft);}
+  .ticket.featured .ticket-code{color:#C9BEEF;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .testi-card{
+    background:var(--white);border-radius:var(--radius-md);padding:28px;box-shadow:var(--shadow);
+    position:relative;
+  }
+  .testi-quote{font-size:1.02rem;color:var(--ink);margin-bottom:18px;}
+  .testi-person{display:flex;align-items:center;gap:12px;}
+  .testi-avatar{
+    width:42px;height:42px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;color:var(--white);
+    font-family:'Baloo 2',sans-serif;font-weight:700;
+  }
+  .testi-person div strong{display:block;font-size:.92rem;}
+  .testi-person div span{font-size:.8rem;color:var(--ink-soft);}
+  .stars{color:var(--yellow);letter-spacing:2px;margin-bottom:10px;font-size:.9rem;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-shell{
+    background:var(--ink);color:var(--white);border-radius:36px;
+    display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
+  }
+  .contact-info{padding:52px 46px;position:relative;}
+  .contact-info h2{color:var(--white);font-size:2.1rem;}
+  .contact-info p{color:#D8CFF5;}
+  .contact-info ul{list-style:none;padding:0;margin:26px 0 0;font-size:.95rem;}
+  .contact-info li{padding:8px 0;display:flex;gap:10px;color:#EDE7FF;}
+  .confetti-dot{position:absolute;border-radius:50%;}
+  .contact-form{background:var(--white);color:var(--ink);padding:52px 46px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:6px;}
+  .field input,.field select,.field textarea{
+    width:100%;padding:12px 14px;border-radius:12px;border:2px solid #EEE3D8;
+    font-family:'Inter',sans-serif;font-size:.96rem;background:var(--cream);color:var(--ink);
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--pink);}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-msg{margin-top:14px;font-size:.9rem;font-weight:600;display:none;}
+  .form-msg.show{display:block;}
+  .form-msg.error{color:var(--pink-deep);}
+  .form-msg.success{color:var(--teal);}
+  .btn:disabled{opacity:.65;cursor:wait;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{max-width:380px;margin:0 auto;}
+    .services-grid,.pricing-grid,.testi-grid{grid-template-columns:1fr;}
+    .ticket.featured{transform:none;}
+    .contact-shell{grid-template-columns:1fr;border-radius:24px;}
+    .contact-info,.contact-form{padding:36px 26px;}
+    .field-row{grid-template-columns:1fr;}
+  }
+
+  footer{padding:46px 0;text-align:center;color:var(--ink-soft);font-size:.88rem;}
+  footer .logo{justify-content:center;margin-bottom:14px;}
+  .foot-links{display:flex;gap:22px;justify-content:center;margin-top:14px;font-weight:600;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-dot"></span>Bloom &amp; Bash</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-outline">Book a date</a>
+      <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Decoration &amp; Event Planning Studio</p>
+      <h1>Bright ideas.<br>Bigger <span class="hl">celebrations.</span></h1>
+      <p class="lead">Bloom &amp; Bash designs and decorates weddings, birthdays, and corporate events with bold color, clever styling, and zero stress for you.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Start planning →</a>
+        <a href="#gallery" class="btn btn-outline">See our events</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>260+</strong><span>Events Styled</span></div>
+        <div><strong>9 yrs</strong><span>In Business</span></div>
+        <div><strong>4.9★</strong><span>Client Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-blob"></div>
+      <div class="hero-card c1"><span class="swatch"></span>Confirmed: Sat, Oct 4</div>
+      <div class="hero-card c2"><span class="swatch"></span>Setup crew: 6 stylists</div>
+      <div class="hero-card c3">🎈 On-theme, on time</div>
+    </div>
+  </div>
+  <svg class="bunting" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,0 L60,60 L120,0 L180,60 L240,0 L300,60 L360,0 L420,60 L480,0 L540,60 L600,0 L660,60 L720,0 L780,60 L840,0 L900,60 L960,0 L1020,60 L1080,0 L1140,60 L1200,0 L1200,60 L0,60 Z" fill="#FFF1DC"/>
+  </svg>
+</section>
+
+<section id="services" class="band-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What we do</p>
+      <h2>Three kinds of unforgettable</h2>
+      <p>Every event gets a custom color story, a styling plan, and a crew that installs and strikes everything so you never lift a balloon.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">💍</div>
+        <h3>Weddings</h3>
+        <p>Full-day styling from ceremony arch to reception tablescape.</p>
+        <ul class="service-list">
+          <li>Custom floral &amp; color palette</li>
+          <li>Ceremony backdrop &amp; aisle design</li>
+          <li>Reception tables, lighting &amp; signage</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🎂</div>
+        <h3>Birthdays</h3>
+        <p>Themed parties for every age, from first birthdays to milestone bashes.</p>
+        <ul class="service-list">
+          <li>Balloon garlands &amp; backdrops</li>
+          <li>Themed tablescapes &amp; favors</li>
+          <li>Photo moments guests actually use</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏢</div>
+        <h3>Corporate Events</h3>
+        <p>On-brand launches, galas, and holiday parties that still feel fun.</p>
+        <ul class="service-list">
+          <li>Brand-matched color &amp; signage</li>
+          <li>Stage, lounge &amp; booth styling</li>
+          <li>Vendor &amp; logistics coordination</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Recent work</p>
+      <h2>A peek at past parties</h2>
+      <p>A sample of celebrations styled by our team, from floral tablescapes to glowing party stages.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-tile reveal"><img src="media/past-party-table.jpg" alt="Colorful floral table decoration"><span>Floral Garden Dinner</span></div>
+      <div class="g-tile reveal"><img src="media/past-party-welcome.jpg" alt="Pink and white floral welcome stage"><span>Soft Floral Welcome</span></div>
+      <div class="g-tile reveal"><img src="media/past-party-stage.jpg" alt="White and green floral event stage"><span>Classic Garden Stage</span></div>
+      <div class="g-tile reveal"><img src="media/past-party-lights.jpg" alt="Orange and gold decorated party stage"><span>Orange &amp; Gold Night</span></div>
+      <div class="g-tile reveal"><video autoplay muted loop playsinline poster="media/past-party-lights.jpg"><source src="media/past-party-video.mp4" type="video/mp4"></video><span>Party In Motion</span></div>
+      <div class="g-tile reveal"><img src="media/past-party-table.jpg" alt="Floral centerpiece at a decorated event"><span>Details Made to Gather</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="band-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Packages</p>
+      <h2>Pick your ticket to the party</h2>
+      <p>Every package includes a design consult, setup, and strike. Add-ons available for any tier.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <p class="ticket-tag">Starter</p>
+          <p class="ticket-price">$450<sub>/event</sub></p>
+          <p>Small gatherings &amp; intimate parties, up to 25 guests.</p>
+          <ul class="ticket-list">
+            <li>Balloon garland or backdrop</li>
+            <li>Tablescape styling, up to 3 tables</li>
+            <li>2-hour setup window</li>
+          </ul>
+        </div>
+        <div class="ticket-stub">
+          <span class="ticket-code">B&amp;B / 01-STARTER</span>
+          <a href="#contact" class="btn btn-outline" style="padding:9px 18px;font-size:.85rem;">Select</a>
+        </div>
+      </div>
+      <div class="ticket featured reveal">
+        <div class="ticket-main">
+          <p class="ticket-tag">Signature</p>
+          <p class="ticket-price">$<sub>/event</sub></p>
+          <p>Our most-booked package for weddings &amp; big birthdays.</p>
+          <ul class="ticket-list">
+            <li>Full venue color &amp; theme design</li>
+            <li>Ceremony/stage backdrop + up to 10 tables</li>
+            <li>Lighting, signage &amp; photo moment</li>
+            <li>Dedicated day-of stylist</li>
+          </ul>
+        </div>
+        <div class="ticket-stub">
+          <span class="ticket-code">B&amp;B / 02-SIGNATURE</span>
+          <a href="#contact" class="btn btn-light" style="padding:9px 18px;font-size:.85rem;">Select</a>
+        </div>
+      </div>
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <p class="ticket-tag">Grand Celebration</p>
+          <p class="ticket-price"><sub>/event</sub></p>
+          <p>Full-scale weddings &amp; corporate galas, 150+ guests.</p>
+          <ul class="ticket-list">
+            <li>Complete venue transformation</li>
+            <li>Custom builds &amp; installations</li>
+            <li>Full crew, lighting &amp; vendor coordination</li>
+          </ul>
+        </div>
+        <div class="ticket-stub">
+          <span class="ticket-code">B&amp;B / 03-GRAND</span>
+          <a href="#contact" class="btn btn-outline" style="padding:9px 18px;font-size:.85rem;">Select</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Kind words</p>
+      <h2>What clients say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">They turned our backyard into something out of a magazine. Guests are still asking who did our wedding.</p>
+        <div class="testi-person">
+          <div class="testi-avatar" style="background:var(--pink);">A</div>
+          <div><strong>Amara O.</strong><span>Wedding, June 2026</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">My daughter's circus party was better than anything I could've pictured. Every detail was on theme.</p>
+        <div class="testi-person">
+          <div class="testi-avatar" style="background:var(--teal);">R</div>
+          <div><strong>Rico M.</strong><span>Birthday, March 2026</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">Our product launch finally looked like our brand instead of a rented conference room. Flawless setup.</p>
+        <div class="testi-person">
+          <div class="testi-avatar" style="background:var(--purple);">S</div>
+          <div><strong>Sana K.</strong><span>Corporate Gala, Jan 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="band-alt">
+  <div class="wrap">
+    <div class="contact-shell reveal">
+      <div class="contact-info">
+        <p class="eyebrow" style="color:var(--yellow);">Let's talk dates</p>
+        <h2>Tell us about your event</h2>
+        <p>Send the details below and we'll reply within 1 business day with next steps and availability.</p>
+        <ul>
+          <li>📍 Studio visits by appointment</li>
+          <li>✉️ hello@bloomandbash.example</li>
+          <li>📞 (555) 019-2244</li>
+        </ul>
+      </div>
+      <form class="contact-form" id="bookingForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" required placeholder="Jordan Lee">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="jordan@email.com">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="eventType">Event type</label>
+            <select id="eventType" name="eventType" required>
+              <option value="">Choose one</option>
+              <option>Wedding</option>
+              <option>Birthday</option>
+              <option>Corporate Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Event date</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Tell us your vision</label>
+          <textarea id="message" name="message" rows="3" placeholder="Guest count, colors, venue, must-haves..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send booking request</button>
+        <p class="form-msg" id="formMsg"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><span class="logo-dot"></span>Bloom &amp; Bash</div>
+    <p>Decoration &amp; event planning, styled bright.</p>
+    <div class="foot-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p style="margin-top:22px;">© 2026 Bloom &amp; Bash Events Co. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  /* Legacy inline fallback retained for compatibility; external script.js is the hosted source. */
+  /* Mobile nav toggle
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  }));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // Booking form: saves every request through the Express backend.
+  const form = document.getElementById('bookingForm');
+  const msg = document.getElementById('formMsg');
+  const submitButton = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitButton.disabled = true;
+    submitButton.textContent = 'Saving request...';
+    msg.className = 'form-msg show';
+    msg.textContent = 'Saving your request...';
+    try {
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message);
+      msg.className = 'form-msg show success';
+      msg.textContent = result.message;
+      form.reset();
+    } catch (error) {
+      msg.className = 'form-msg show error';
+      msg.textContent = error.message || 'Something went wrong. Please try again.';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send booking request';
+    }
+  }); */
+</script>
+
+</body>
+</html>

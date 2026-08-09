@@ -1,0 +1,33 @@
+/* Bloom & Bash external stylesheet additions */
+/* The page keeps its base design in index.html and uses this file for reusable hosted styles. */
+
+.g-tile img,
+.g-tile video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.g-tile::after {
+  z-index: 1;
+}
+
+.g-tile span {
+  z-index: 2;
+}
+
+.form-msg.error { color: #e8386e; }
+.form-msg.success { color: #00a88f; }
+.btn:disabled { opacity: .65; cursor: wait; }
+
+@media (max-width: 860px) {
+  .nav-links.open { transform: translateY(0); }
+}
+
+@media (max-width: 760px) {
+  .g-tile img,
+  .g-tile video { min-height: 130px; }
+}
